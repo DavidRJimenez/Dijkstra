@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #a09f9a;
+}
+
+#contenedorGrafo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    height: 150vh; /* Ajusta el tamaño vertical del contenedor del grafo */
+}
+
+#grafo {
+    background-color: #feffff;
+    border: 2px solid #000000;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 70%; /* Ajusta el tamaño horizontal del área del grafo */      
+    height: 70%; /* Ajusta el tamaño vertical del área del grafo */
+}
+
+#grafo p {
+    color: white; /* Cambia el color del texto dentro del grafo a blanco */
+}
+
+#formularioNodos,
+#formularioAristas {
+    border: 1px solid #000000;
+    padding: 10px;
+    width: 40%; /* Ajusta el tamaño horizontal de los formularios según sea necesario */
+}
+.custom-file-upload {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    margin-top: 10px;
+}
+
+#inputFile {
+    display: none;
+}
+
+/* Centrar el botón en la mitad */
+#contenedorGrafo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    height: 150vh; /* Ajusta el tamaño vertical del contenedor del grafo */
+}
+
+.custom-file-upload i {
+    margin-right: 5px;
+}
+
+select,
+input,
+button {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #036bcc;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #000000;
+}
+
+.matricesTitle {
+    text-align: center; /* Centra el título de las matrices */
+}
+
+.matrices {
+    text-align: center; /* Centra las matrices */
+}
+
+#matricesContainer {
+    text-align: center; /* Centra el contenido horizontalmente */
+    margin-top: 30px; /* Añade un margen superior para separar del resto del contenido */
+}
+
+.matricesTitle {
+    text-align: center; /* Centra el título de las matrices */
+}
+
+.matrices {
+    display: inline-block; /* Permite que el contenedor de matrices se ajuste al contenido */
+    text-align: left; /* Alinea el contenido de las matrices a la izquierda dentro del contenedor centrado */
+}
+
+/* Estilo para resaltar la ruta mínima */
+.ruta-minima {
+    stroke: rgb(29, 252, 0); /* Cambia el color de las aristas a verde */
+    stroke-width: 3px; /* Cambia el grosor de las aristas */
+}
+
+.link-line.ruta-critica {
+    stroke: red;  /* Cambia el color de la arista a rojo */
+    stroke-width: 4;  /* Aumenta el grosor de la arista*/
+}

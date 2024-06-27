@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcial EDNL</title>
+    <link rel="stylesheet" type="text/css" href="parcial.css">
+</head>
+<body>
+    <div id="contenedorGrafo">
+        <h1>Aplicacion Web De Nodos</h1>
+        <h2>David Esteban Martinez Rios - David Ricardo Jimenez Nuñez</h2>
+        <!-- Contenedor para el grafo -->
+        <div id="grafo"></div>
+        <!-- Contenedor para el formulario de nodos -->
+        <div id="formularioNodos">
+            <input type="text" id="nombreNodo" placeholder="Nombre del nodo">
+            <input type="number" id="duracionNodo" placeholder="Duración">
+            <input type="number" id="costoNodo" placeholder="Costo">
+            <input type="text" id="prerequisitosNodo" placeholder="Prerrequisitos (Separados por coma)">
+            <input type="text" id="postrequisitosNodo" placeholder="Postrequisitos (Separados por coma)">
+            <button id="crearNodo">Crear Nodo</button>
+            <button id="eliminarNodo">Eliminar Nodo</button>
+            <button id="editarNodo">Editar Nodo</button>
+        </div>
+        <!-- Contenedor para el formulario de aristas -->
+        <div id="formularioAristas">
+            <input type="text" id="nombreArista" placeholder="Nombre de la arista">
+            <input type="number" id="costoArista" placeholder="Costo de la conexion">
+            <button id="conectarNodos">Conectar Nodos</button>
+            <button id="eliminarArista">Eliminar Arista</button>
+            <button id="editarArista">Editar Arista</button>
+            <button id="encontrarRutaMinima">Encontrar Ruta Mínima</button>
+            <button id="encontrarRutaCritica">Encontrar Ruta Crítica</button>
+        </div>
+        <!-- Input estilizado para cargar el archivo -->
+        <label for="inputFile" class="custom-file-upload">
+            <i class="fas fa-cloud-upload-alt"></i> Seleccionar archivo JSON
+        </label>
+        <input type="file" id="inputFile" />
+    </div>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="parcial.js"></script>
+        
+    <div id="matricesContainer">
+        <h3 class="matricesTitle">Matrices</h3>
+        <div id="matrices" class="matrices"></div>
+    </div>
+
+    <script>
+        function showMatrices(adjacencyMatrix, incidenceMatrix) {
+            const matricesDiv = document.getElementById("matrices");
+
+            matricesDiv.innerHTML = `
+                <h4>Matriz de Adyacencia</h4>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            ${Object.keys(adjacencyMatrix).map(key => `<th>${key}</th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${Object.keys(adjacencyMatrix).map(rowKey => `
+                            <tr>
+                                <th>${rowKey}</th>
+                                ${Object.keys(adjacencyMatrix[rowKey]).map(colKey => `<td>${adjacencyMatrix[rowKey][colKey]}</td>`).join('')}
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                
+                <h4>Matriz de Incidencia</h4>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            ${Object.keys(incidenceMatrix).map(key => `<th>${key}</th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${Object.keys(incidenceMatrix).map(rowKey => `
+                            <tr>
+                                <th>${rowKey}</th>
+                                ${Object.keys(incidenceMatrix[rowKey]).map(colKey => `<td>${incidenceMatrix[rowKey][colKey]}</td>`).join('')}
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        document.getElementById("showMatrices").addEventListener("click", function() {
+            const adjacencyMatrix = getAdjacencyMatrix(nodos, aristas);
+            const incidenceMatrix = getIncidenceMatrix(nodos, aristas);
+            showMatrices(adjacencyMatrix, incidenceMatrix);
+        });
+    </script>
+</body>
+</html>
